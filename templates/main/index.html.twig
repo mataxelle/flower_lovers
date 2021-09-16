@@ -4,26 +4,46 @@
 
 {% block body %}
 
-<div class="container">
-    <div class="row">
-		<div class="col s12 m12 l12">
-			<h1 class="text-center">Bienvenue sur flowerLovers</h1>
-		</div>
-	</div>
+<div>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Partagez vos plus belles photo de fleurs</h1>
+            <p class="lead">Invitons des amis à eller les voir, ou buvons et dansons en bonne compagnie sous les fleurs</p>
+            <p class="lead">
+                <a class="btn btn-primary btn-lg" href="#" role="button">Partager une photo</a>
+            </p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+		    <div class="col s12 m12 l12">
+			    <h2 class="text-center">Dernières publications sur flowerLovers</h2>
+		    </div>
+	    </div>
 
-    <div class="row">
-        <div class="card-deck">
-            {#{% for post in posts %}#}
-            <div class="col s10 m6 l4">
-                <div class="card">
-                    <h5 class="card-title">Titre</h5>
-                    <img>
-                    <div class="card-body">
-                        <p class="card-text">text</p>
-                    </div
+        <div class="row">
+            <div class="card-deck">
+                {#{% for post in posts %}#}
+                <div>
+                    <div class="card">
+                        <img class="card-img-top mw-50" src="{{ asset('assets/images/plantes.jpg') }}" alt="Plantes">
+                        <div class="card-body">
+                            <h5 class="card-title">Titre</h5>
+                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        </div
+                    </div>
                 </div>
+                <div>
+                    <div class="card">
+                        <img class="card-img-top mw-50" src="{{ asset('assets/images/plantes.jpg') }}" alt="Plantes">
+                        <div class="card-body">
+                            <h5 class="card-title">Titre</h5>
+                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        </div
+                    </div>
+                </div>
+                {#{% endfor %} #} 
             </div>
-            {#{% endfor %} #} 
         </div>
     </div>
 </div>

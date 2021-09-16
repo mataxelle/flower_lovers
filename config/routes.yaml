@@ -15,7 +15,11 @@ post_show:
 post_edit:
   path: /edit/{id}
   controller: App\Controller\MainController::edit
+  requirements:
+    id: '\d+'
   
-post_remove:
-  path: /remove/{id}
-  controller: App\Controller\MainController::remove  
+post_delete:
+  path: /delete/{id}
+  controller: App\Controller\MainController::delete
+  requirements:
+    id: '\d+' 
