@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Post;
+use App\Form\PostType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -13,9 +15,14 @@ class MainController extends AbstractController
         return $this->render('main/index.html.twig');
     }
 
-    public function add()
+    public function add(): Response
     {
-        return $this->render('main/post_add.html.twig');
+        $post = new Post();
+        $form = $this->createForm(PostType::class, $post);
+
+        return $this->render('main/post_add.html.twig', [
+            'form' => $form->createView(),
+        ]);
     }
 
     public function show()

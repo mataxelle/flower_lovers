@@ -1,0 +1,17 @@
+{{ form_start(form) }}
+    <div>
+        {{ form_row(form.title, { 'label': 'Titre'}) }}
+    </div>
+    <div>
+        {{ form_row(form.content, { 'label': 'Description'}) }}
+    </div>
+    <div>
+        {{ form_row(form.picture, { 'label': 'Image'}) }}
+    </div>
+    <div>
+        {{ form_row(form.categories, { 'label': 'Choisissez une couleur'}) }}
+    </div>
+    <div>
+        <button class="btn btn-success">Publier</button>
+    </div>
+{{ form_end(form) }}
