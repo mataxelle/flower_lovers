@@ -7,20 +7,28 @@
         <h1>Inscription</h1>
 
         {{ form_start(registrationForm) }}
-            <div>
-                {{ form_row(registrationForm.email) }}
+            <div class="form-group">
+                {{ form_label(registrationForm.email, 'Email') }}
+                {{ form_widget(registrationForm.email) }}
+                <span class="text-danger">{{ form_errors(registrationForm.email) }}</span>
             </div>
-            <div>
-                {{ form_row(registrationForm.username) }}
+            <div class="form-group">
+                {{ form_label(registrationForm.username, 'Nom d\'utilisateur') }}
+                {{ form_widget(registrationForm.username) }}
+                <span class="text-danger">{{ form_errors(registrationForm.username) }}</span>
             </div>
-            <div>
-                {{ form_row(registrationForm.plainPassword, { label: 'Password' }) }}
+            <div class="form-group">
+                {{ form_label(registrationForm.plainPassword, 'Mot de passe') }}
+                {{ form_widget(registrationForm.plainPassword) }}
+                <span class="text-danger">{{ form_errors(registrationForm.plainPassword) }}</span>
             </div>
-            <div>     
-                {{ form_row(registrationForm.agreeTerms) }}
+            <div class="form-group">     
+                {{ form_label(registrationForm.agreeTerms) }}
+                {{ form_widget(registrationForm.agreeTerms) }}
+                <span class="text-danger">{{ form_errors(registrationForm.agreeTerms) }}</span>
             </div>
-            <div>
-                <button type="submit" class="btn">Register</button>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">S'incrire</button>
             </div>
         {{ form_end(registrationForm) }}
     </div>
