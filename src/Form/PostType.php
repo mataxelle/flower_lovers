@@ -24,8 +24,8 @@ class PostType extends AbstractType
             ->add('categories', EntityType::class, [
                 'class' => Category::class,
                 'choice_label' => 'label',
-                'multiple' => true,
-                'expanded' => false
+                'multiple' => true,  //multliple choix mais un seul possible. Doit être à True
+                'expanded' => true  //checkbox si True
             ])
         ;
     }
