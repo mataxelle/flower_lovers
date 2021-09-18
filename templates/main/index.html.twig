@@ -15,7 +15,7 @@
         </div>
     </div>
     <div class="container">
-        <div class="row">
+        <div class="row my-5">
 		    <div class="col s12 m12 l12">
                 {% if posts %}
 			    <h2 class="text-center">Dernières publications sur flowerLovers</h2>
@@ -25,27 +25,18 @@
 		    </div>
 	    </div>
 
-        <div class="row">
+        <div class="">
             <div class="card-deck">
                 {% for post in posts %}
-                <div>
                     <div class="card">
-                        <img class="card-img-top mw-50" src="{{ asset('assets/images/plantes.jpg') }}" alt="Plantes">
+                        <img class="card-img-top mw-50" src="{{ asset('uploads/' ~ post.picture) }}" alt="{{ post.picture }}">
                         <div class="card-body">
-                            <h5 class="card-title">{{ post.title }}</h5>
-                            <p class="card-text"><small class="text-muted">{{ post.lastUpdateDate }}</small></p>
-                        </div
+                            <h5 class="card-title">
+                                <a href="{{ path('post_show', {'id' : post.id}) }}">{{ post.title }}</a>
+                            </h5>
+                            <p class="card-text"><small class="text-muted">{{ post.lastUpdateDate|date('d/m/Y') }}</small></p>
+                        </div>
                     </div>
-                </div>
-                <div>
-                    <div class="card">
-                        <img class="card-img-top mw-50" src="{{ asset('assets/images/plantes.jpg') }}" alt="Plantes">
-                        <div class="card-body">
-                            <h5 class="card-title">Titre</h5>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                        </div
-                    </div>
-                </div>
                 {% endfor %}
             </div>
         </div>

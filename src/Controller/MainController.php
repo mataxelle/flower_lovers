@@ -67,13 +67,58 @@ class MainController extends AbstractController
         ]);
     }
 
-    public function show()
+    public function show(Post $post)
     {
-        return $this->render('main/post_show.html.twig');
+        return $this->render('main/post_show.html.twig', [
+            'post' => $post
+        ]);
     }
 
-    public function edit()
+    public function edit(Post $post, Request $request)
     {
-        return $this->render('main/post_edit.html.twig');
+        $oldPicture = $post->getPicture();
+
+        $form = $this->createForm(PostType::class, $post);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $post->setUsers($this->getUser());
+
+            $post->setLastUpdateDate(new \DateTime());
+
+            if ($post->getPicture() !== null && $post->getPicture() !== $oldPicture) {
+                $file = $form->get('picture')->getData();
+                $fileName =  uniqid(). '.' .$file->guessExtension();
+
+                try {
+                    $file->move(
+                        $this->getParameter('images_directory'),
+                    );
+                } catch (FileException $e) {
+                    return new Response($e->getMessage());
+                }
+
+                $post->setPicture($fileName);
+            } else {
+                $post->setPicture($oldPicture);
+            }
+
+            if (!$post->getPublicationDate()) {
+                $post->setPublicationDate(new \DateTime());
+            }
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($post);
+            $em->flush();
+
+            $this->addFlash('message', 'Annonce modifier avec succès');
+
+            return $this->redirectToRoute('post_show', ['id' => $post->getId()]);
+        }
+
+        return $this->render('main/post_edit.html.twig', [
+            'post' => $post,
+            'form' => $form->createView(),
+        ]);
     }
 }

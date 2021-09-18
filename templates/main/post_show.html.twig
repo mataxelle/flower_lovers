@@ -4,23 +4,22 @@
     {{ parent() }}
 {% endblock %}
 
-{% block title %}Post{% endblock %}
+{% block title %}{{ post.title }}{% endblock %}
 
 {% block body %}
     <div class="container">
 		<div class="row">
 			<div class="col ">
-				<h1 class="text-center">Post</h1>
+				<h1 class="text-center">{{ post.title }}</h1>
 			</div>
 		</div>
 
         <div class="row">
             <div class="col">
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="{{ asset('assets/images/plantes.jpg')}}" alt="Plantes">
+                <div class="card">
+                    <img class="card-img-top" src="{{ asset('uploads/' ~ post.picture) }}" alt="{{ post.picture }}">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <p class="card-text">{{ post.content }}</p>
                         <a href="#" class="btn btn-primary">Go somewhere</a>
                     </div>
                 </div>
