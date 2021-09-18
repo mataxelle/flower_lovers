@@ -5,21 +5,21 @@ home:
   controller: App\Controller\MainController::index
 
 post_add:
-  path: /add
+  path: /post/add
   controller: App\Controller\MainController::add
 
 post_show:
-  path: /show/{id}
+  path: /post/show/{id}
   controller: App\Controller\MainController::show
 
 post_edit:
-  path: /edit/{id}
+  path: /post/edit/{id}
   controller: App\Controller\MainController::edit
   requirements:
     id: '\d+'
   
 post_delete:
-  path: /delete/{id}
+  path: /post/delete/{id}
   controller: App\Controller\MainController::delete
   requirements:
     id: '\d+' 
