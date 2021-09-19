@@ -14,6 +14,12 @@
 			</div>
 		</div>
 
-		{#{% include "includes/propertie_form.html.twig" %}#}
+		<div>
+		    {% if post.picture is not null %}
+			    <img src="{{ asset('uploads/' ~ post.picture) }}">
+			{% endif %}
+		</div>
+
+		{% include "includes/post_form.html.twig" %}
 	</div>
 {% endblock %}

@@ -25,20 +25,20 @@
 		    </div>
 	    </div>
 
-        <div class="">
-            <div class="card-deck">
-                {% for post in posts %}
-                    <div class="card">
-                        <img class="card-img-top mw-50" src="{{ asset('uploads/' ~ post.picture) }}" alt="{{ post.picture }}">
-                        <div class="card-body">
-                            <h5 class="card-title">
-                                <a href="{{ path('post_show', {'id' : post.id}) }}">{{ post.title }}</a>
-                            </h5>
-                            <p class="card-text"><small class="text-muted">{{ post.lastUpdateDate|date('d/m/Y') }}</small></p>
-                        </div>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            {% for post in posts %}
+            <div class="col">
+                <div class="card h-100">
+                    <img class="card-img-top h-100" src="{{ asset('uploads/' ~ post.picture) }}" alt="{{ post.picture }}">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a href="{{ path('post_show', {'id' : post.id}) }}">{{ post.title }}</a>
+                        </h5>
+                        <p class="card-text"><small class="text-muted">{{ post.lastUpdateDate|date('d/m/Y') }}</small></p>
                     </div>
-                {% endfor %}
+                </div>
             </div>
+            {% endfor %}    
         </div>
     </div>
 </div>
