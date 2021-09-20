@@ -18,11 +18,11 @@ class PostType extends AbstractType
     {
         $builder
             ->add('picture', FileType::class, [
+                'required' => false,
                 'data_class' => null
             ])
             ->add('title', TextType::class)
             ->add('content', TextareaType::class)
-            //->add('publicationDate') généré automatiquement
             ->add('categories', EntityType::class, [
                 'class' => Category::class,
                 'choice_label' => 'label',

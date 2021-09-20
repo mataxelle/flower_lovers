@@ -57,7 +57,7 @@ class MainController extends AbstractController
             $em->persist($post); // On confie notre entité à l'entity manager (on persist l'entité)
             $em->flush(); // On execute la requete
 
-            $this->addFlash('message', 'Nouvelle annonce ajouté avec succès');
+            $this->addFlash('message', 'Nouveau post ajouté avec succès');
 
             return $this->redirectToRoute('post_show', ['id' => $post->getId()]);
         }
@@ -93,6 +93,7 @@ class MainController extends AbstractController
                 try {
                     $file->move(
                         $this->getParameter('images_directory'),
+                        $fileName
                     );
                 } catch (FileException $e) {
                     return new Response($e->getMessage());
@@ -111,7 +112,7 @@ class MainController extends AbstractController
             $em->persist($post);
             $em->flush();
 
-            $this->addFlash('message', 'Annonce modifier avec succès');
+            $this->addFlash('message', 'Post modifier avec succès');
 
             return $this->redirectToRoute('post_show', ['id' => $post->getId()]);
         }
@@ -120,5 +121,16 @@ class MainController extends AbstractController
             'post' => $post,
             'form' => $form->createView(),
         ]);
+    }
+
+    public function delete(Post $post): Response 
+    {
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($post);
+        $em->flush();
+
+        $this->addFlash('message', 'Post supprimé avec succès');
+
+        return $this->redirectToRoute('home');
     }
 }
