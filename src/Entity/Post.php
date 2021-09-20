@@ -50,7 +50,7 @@ class Post
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="posts")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $users;
+    private $user;
 
     /**
      * @ORM\Column(type="datetime")
@@ -139,18 +139,6 @@ class Post
         return $this;
     }
 
-    public function getUsers(): ?User
-    {
-        return $this->users;
-    }
-
-    public function setUsers(?User $users): self
-    {
-        $this->users = $users;
-
-        return $this;
-    }
-
     public function getLastUpdateDate(): ?\DateTimeInterface
     {
         return $this->lastUpdateDate;
@@ -159,6 +147,18 @@ class Post
     public function setLastUpdateDate(\DateTimeInterface $lastUpdateDate): self
     {
         $this->lastUpdateDate = $lastUpdateDate;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

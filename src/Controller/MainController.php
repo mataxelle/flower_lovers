@@ -29,7 +29,7 @@ class MainController extends AbstractController
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $post->setUsers($this->getUser());
+            $post->setUser($this->getUser());
 
             $post->setLastUpdateDate(new \DateTime());  //initialisation de la dernière modification
 
@@ -82,7 +82,7 @@ class MainController extends AbstractController
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $post->setUsers($this->getUser());
+            $post->setUser($this->getUser());
 
             $post->setLastUpdateDate(new \DateTime());
 
