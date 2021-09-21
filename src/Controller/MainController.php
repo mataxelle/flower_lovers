@@ -68,9 +68,10 @@ class MainController extends AbstractController
     }
 
     public function show(Post $post)
-    {
+    { 
         return $this->render('main/post_show.html.twig', [
-            'post' => $post
+            'post' => $post,
+            'user' => $post->getUser()
         ]);
     }
 

@@ -15,9 +15,9 @@
 		</div>
 
         <div class="row">
-            <div class="col">
+            <div class="col-6 offset-md-3">
                 <div class="card">
-                    <div class="card-header">{{ app.user.username }}</div>
+                    <div class="card-header">{{ user.username }}</div>
                     <img class="card-img-top" src="{{ asset('uploads/' ~ post.picture) }}" alt="{{ post.picture }}">
                     <div class="card-body">
                         <p class="card-text">{{ post.content }}</p>
