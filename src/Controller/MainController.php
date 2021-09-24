@@ -134,4 +134,9 @@ class MainController extends AbstractController
 
         return $this->redirectToRoute('home');
     }
+
+    public function about(): Response
+    { 
+        return $this->render('main/about.html.twig');
+    }
 }

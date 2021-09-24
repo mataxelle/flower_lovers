@@ -26,4 +26,8 @@ post_delete:
 
 admin:
   path: /admin
-  controller: App\Controller\AdminController::admin    
+  controller: App\Controller\AdminController::admin
+
+about:
+  path: /about
+  controller: App\Controller\MainController::about 
