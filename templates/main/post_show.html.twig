@@ -25,10 +25,12 @@
                            {{ category.label }}{{ loop.last ? '' : ',' }}
                            {% endfor %}
                         </p>
+                        {% if post in app.user.posts or is_granted ('ROLE_ADMIN') %}
                         <div>
                             <a href="{{ path('post_edit', {'id' : post.id}) }}" class="btn btn-success">Modifier</a>
                             <a href="{{ path('post_delete', {'id' : post.id}) }}" class="btn btn-danger">Supprimer</a>
-                        </div>    
+                        </div>  
+                        {% endif %}  
                     </div>
                     <div class="card-footer text-muted">{{ post.lastUpdateDate|date('d/m/Y') }}</div>
                 </div>
