@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon compte{% endblock %}
+
+{% block body %}
+<div class="container">
+
+    <div>
+        <h1 class="">Hello {{ user.username }}!</h1>
+        <a href="{{ path('user_edit', {'id' : user.id})}}">Modifier</a>
+    </div>
+    <div>
+        <p>{{ user.username }}</p>
+        <p>{{ user.email }}</p>
+    </div>
+    <div></div>    
+</div>
+{% endblock %}

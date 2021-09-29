@@ -36,8 +36,8 @@
                                 {% if is_granted ('ROLE_ADMIN') %}
                                     <a class="dropdown-item waves-effect waves-light" href="{{ path('admin') }}">Admin</a>
                                 {% endif %}
-                                <a class="dropdown-item waves-effect waves-light" href="#">Mon compte</a>
                                 {% if app.user %}
+                                    <a class="dropdown-item waves-effect waves-light" href="{{ path('user', {'id' : app.user.id}) }}">Mon compte</a>
                                     <a class="dropdown-item waves-effect waves-light" href="{{ path('app_logout') }}">Deconnexion</a>
                                 {% elseif app.user is null %}
                                     <a class="dropdown-item waves-effect waves-light" href="{{ path('app_login') }}">Connexion</a>

@@ -30,4 +30,22 @@ admin:
 
 about:
   path: /about
-  controller: App\Controller\MainController::about 
+  controller: App\Controller\MainController::about
+
+user:
+  path: /user/{id}
+  controller: App\Controller\UserController::index
+  requirements:
+    id: '\d+'
+
+user_edit:
+  path: /user/edit/{id}
+  controller: App\Controller\UserController::edit
+  requirements:
+    id: '\d+'
+  
+user_delete:
+  path: /user/delete/{id}
+  controller: App\Controller\UserController::delete
+  requirements:
+    id: '\d+'  
