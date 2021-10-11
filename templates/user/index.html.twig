@@ -5,14 +5,38 @@
 {% block body %}
 <div class="container">
 
-    <div>
-        <h1 class="">Hello {{ user.username }}!</h1>
-        <a href="{{ path('user_edit', {'id' : user.id})}}">Modifier</a>
+    <div class="my-5">
+        <h1 class="text-center my-5">Hello {{ user.username }}!</h1>
+        <div>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+               sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+               Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </p>
+            <a class="btn btn-success" href="{{ path('user_edit', {'id' : user.id})}}">Modifier</a>
+        </div>    
     </div>
-    <div>
-        <p>{{ user.username }}</p>
-        <p>{{ user.email }}</p>
-    </div>
-    <div></div>    
+    <hr class="mx-auto my-4 w-50">
+    <div class="row">
+        <div class="col-sm mt-5">
+            <h4 class="mb-4">Infos utilisateur</h4>
+            <p class="fw-bold">{{ user.username }}</p>
+            <p class="fw-bold">{{ user.email }}</p>
+        </div>
+        <div class="col-sm mt-5">
+            <h4 class="mb-4">Publication</h4>
+            {% if post|length < 2 %}
+                <p><span class="fw-bold">{{ post|length }}</span> publication</p>
+            {% else %}
+                <p><span class="fw-bold">{{ post|length }}</span> publications</p>
+            {% endif %}
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                {% for post in post %}
+                <div>
+                    <a href="{{ path('post_show', {'id' : post.id}) }}"><img class="card-img-top h-100" src="{{ asset('uploads/' ~ post.picture) }}" alt="{{ post.picture }}"></a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>   
 </div>
 {% endblock %}
