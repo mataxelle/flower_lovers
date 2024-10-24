@@ -17,12 +17,12 @@ post_edit:
   controller: App\Controller\MainController::edit
   requirements:
     id: '\d+'
-  
+
 post_delete:
   path: /post/delete/{id}
   controller: App\Controller\MainController::delete
   requirements:
-    id: '\d+' 
+    id: '\d+'
 
 admin:
   path: /admin
@@ -43,9 +43,25 @@ user_edit:
   controller: App\Controller\UserController::edit
   requirements:
     id: '\d+'
-  
+
 user_delete:
   path: /user/delete/{id}
   controller: App\Controller\UserController::delete
   requirements:
-    id: '\d+'  
+    id: '\d+'
+
+category_add:
+  path: /category/add
+  controller: App\Controller\CategoryController::add
+
+category_edit:
+  path: /category/edit/{id}
+  controller: App\Controller\CategoryController::edit
+  requirements:
+    id: '\d+'
+
+category_delete:
+  path: /category/delete/{id}
+  controller: App\Controller\CategoryController::delete
+  requirements:
+    id: '\d+'

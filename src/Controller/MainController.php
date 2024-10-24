@@ -35,7 +35,7 @@ class MainController extends AbstractController
 
             if ($post->getPicture() !== null) {
                 $file = $form->get('picture')->getData();
-                $fileName =  uniqid(). '.' .$file->guessExtension();
+                $fileName =  uniqid() . '.' . $file->guessExtension();
 
                 try {
                     $file->move(
@@ -68,7 +68,7 @@ class MainController extends AbstractController
     }
 
     public function show(Post $post)
-    { 
+    {
         return $this->render('main/post_show.html.twig', [
             'post' => $post,
             'user' => $post->getUser()
@@ -89,7 +89,7 @@ class MainController extends AbstractController
 
             if ($post->getPicture() !== null && $post->getPicture() !== $oldPicture) {
                 $file = $form->get('picture')->getData();
-                $fileName =  uniqid(). '.' .$file->guessExtension();
+                $fileName =  uniqid() . '.' . $file->guessExtension();
 
                 try {
                     $file->move(
@@ -113,7 +113,7 @@ class MainController extends AbstractController
             $em->persist($post);
             $em->flush();
 
-            $this->addFlash('message', 'Post modifier avec succès');
+            $this->addFlash('message', 'Post modifié avec succès');
 
             return $this->redirectToRoute('post_show', ['id' => $post->getId()]);
         }
@@ -124,7 +124,7 @@ class MainController extends AbstractController
         ]);
     }
 
-    public function delete(Post $post): Response 
+    public function delete(Post $post): Response
     {
         $em = $this->getDoctrine()->getManager();
         $em->remove($post);
@@ -136,7 +136,7 @@ class MainController extends AbstractController
     }
 
     public function about(): Response
-    { 
+    {
         return $this->render('main/about.html.twig');
     }
 }

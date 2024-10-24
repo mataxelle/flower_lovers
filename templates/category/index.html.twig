@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Catégories
+{% endblock %}
+
+{% block body %}
+	<div class="container my-5">
+		<h1 class="text-center my-5">Les catégories</h1>
+
+		<section id="category" class="my-5">
+			<p>Il y a
+				{{ categories|length }}
+				catégorie(s)</p>
+
+			<div>
+				<table class="table">
+					<thead class="thead-dark">
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">Label</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for categorie in categories %}
+							<tr>
+								<th>{{ categorie.id }}</th>
+								<th>{{ categorie.label }}</th>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</section>
+	</div>
+{% endblock %}

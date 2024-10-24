@@ -1,0 +1,10 @@
+{{ form_start(form, { 'attr': {'class': ' w-50 m-auto mb-5'}}) }}
+<div class="mb-3">
+	{{ form_label( form.label, 'Nom de catégorie') }}
+	{{ form_widget(form.label, {'attr': {'class': 'form-control'}}) }}
+	<span class="error">{{ form_errors(form.label) }}</span>
+</div>
+<div>
+	<button class="btn btn-success">Ajouter</button>
+</div>
+{{ form_end(form) }}
