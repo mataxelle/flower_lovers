@@ -1,46 +1,50 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Accueil | {{ parent() }}{% endblock %}
+{% block title %}Accueil |
+	{{ parent() }}
+{% endblock %}
 
 {% block body %}
 
-<div>
-    <div class="container-fluid bg-success p-2 text-dark bg-opacity-25">
-        <div class="container">
-            <h1 class="display-4 mt-5">Partagez vos plus belles photo de fleurs et de la nature</h1>
-            <hr class="my-4 my-3">
-            <p class="lead">Invitons des amis à eller les voir, ou buvons et dansons en bonne compagnie sous les fleurs</p>
-            <p class="lead">
-                <a class="btn btn-primary btn-lg" href="/post/add" role="button">Partager une photo</a>
-            </p>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row my-5">
-		    <div class="col s12 m12 l12">
-                {% if posts %}
-			    <h2 class="text-center">Dernières publications sur flowerLovers</h2>
-                {% else %}
-                <h2 class="text-center">Il y a aucune publication</h2>
-                {% endif %}
-		    </div>
-	    </div>
+	<div>
+		<div class="container-fluid bg-success p-2 text-dark bg-opacity-25">
+			<div class="container">
+				<h1 class="display-4 mt-5">Partagez vos plus belles photo de fleurs et de la nature</h1>
+				<hr class="my-4 my-3">
+				<p class="lead">Partagez vos pépites sans modération</p>
+				<p class="lead">
+					<a class="btn btn-success btn-lg" href="/post/add" role="button">Partager une photo</a>
+				</p>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row my-5">
+				<div class="col s12 m12 l12">
+					{% if posts %}
+						<h2 class="text-center">Dernières publications sur flowerLovers</h2>
+					{% else %}
+						<h2 class="text-center">Il y a aucune publication</h2>
+					{% endif %}
+				</div>
+			</div>
 
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-            {% for post in posts %}
-            <div class="col">
-                <div class="card h-100">
-                    <img class="card-img-top h-100" src="{{ asset('uploads/' ~ post.picture) }}" alt="{{ post.picture }}">
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            <a href="{{ path('post_show', {'id' : post.id}) }}">{{ post.title }}</a>
-                        </h5>
-                        <p class="card-text"><small class="text-muted">{{ post.lastUpdateDate|date('d/m/Y') }}</small></p>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}    
-        </div>
-    </div>
-</div>
+			<div class="row row-cols-1 row-cols-md-3 g-4">
+				{% for post in posts %}
+					<div class="col">
+						<div class="card h-100">
+							<img class="card-img-top h-100" src="{{ asset('uploads/' ~ post.picture) }}" alt="{{ post.picture }}">
+							<div class="card-body">
+								<h5 class="card-title">
+									<a href="{{ path('post_show', {'id' : post.id}) }}">{{ post.title }}</a>
+								</h5>
+								<p class="card-text">
+									<small class="text-muted">{{ post.lastUpdateDate|date('d/m/Y') }}</small>
+								</p>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
 {% endblock %}

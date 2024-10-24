@@ -8,7 +8,7 @@
 			{% endblock %}
 		</title>
 		{# Run `composer require symfony/webpack-encore-bundle`
-		           and uncomment the following Encore helpers to start using Symfony UX #}
+										           and uncomment the following Encore helpers to start using Symfony UX #}
 		{% block stylesheets %}
 			{{ encore_entry_link_tags('app') }}
 		{% endblock %}
@@ -20,7 +20,7 @@
 					<a class="navbar-brand" href="{{ path('home') }}">Flowerlovers<i class="fas fa-leaf"></i>
 					</a>
 					{% if app.user %}
-						<p class="text-center text-white">{{ app.user.username }}</p>
+						<p class="text-center text-white my-auto">{{ app.user.username }}</p>
 					{% elseif app.user is null %}
 						<p class="text-center text-white">Bonjour visiteur</p>
 					{% endif %}
@@ -35,11 +35,11 @@
 							</li>
 							<li class="nav-item dropdown">
 								<a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
-									<i class="fas fa-user"></i>Profile
+									Mon compte
 								</a>
 								<div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdown">
 									{% if is_granted ('ROLE_ADMIN') %}
-										<a class="dropdown-item waves-effect waves-light" href="{{ path('admin') }}">Admin</a>
+										<a class="dropdown-item waves-effect waves-light" href="{{ path('admin') }}">Administration</a>
 									{% endif %}
 									{% if app.user %}
 										<a class="dropdown-item waves-effect waves-light" href="{{ path('user', {'id' : app.user.id}) }}">Mon compte</a>

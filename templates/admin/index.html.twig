@@ -7,35 +7,72 @@
 	<div class="container my-5">
 		<h1 class="text-center my-5">DASHBOARD</h1>
 
-		<div>
-			<table class="table">
-				<thead class="thead-dark">
-					<tr>
-						<th scope="col">#</th>
-						<th scope="col">Username</th>
-						<th scope="col">Email</th>
-						<th scope="col">Role</th>
-					</tr>
-				</thead>
-				<tbody>
-					{% for user in users %}
+		<section id="users" class="my-5">
+			<p>Il y a
+				{{ users|length }}
+				membre(s)</p>
+
+			<div>
+				<table class="table">
+					<thead class="thead-dark">
 						<tr>
-							<th>{{ user.id }}</th>
-							<td>{{ user.username }}</td>
-							<td>{{ user.email }}</td>
-							{% if 'ROLE_ADMIN' in user.roles %}
-								<td>
-									<span class="badge blue">admin</span>
-								</td>
-							{% else %}
-								<td>
-									<span class="badge red">no admin</span>
-								</td>
-							{% endif %}
+							<th scope="col">#</th>
+							<th scope="col">Username</th>
+							<th scope="col">Email</th>
+							<th scope="col">Role</th>
 						</tr>
-					{% endfor %}
-				</tbody>
-			</table>
-		</div>
+					</thead>
+					<tbody>
+						{% for user in users %}
+							<tr>
+								<th>{{ user.id }}</th>
+								<td>{{ user.username }}</td>
+								<td>{{ user.email }}</td>
+								{% if 'ROLE_ADMIN' in user.roles %}
+									<td>
+										<span class="badge bg-success">admin</span>
+									</td>
+								{% else %}
+									<td>
+										<span class="badge bg-secondary">no admin</span>
+									</td>
+								{% endif %}
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</section>
+
+		<hr>
+
+		<section id="posts" class="my-5">
+			<p>Il y a
+				{{ posts|length }}
+				post(s)</p>
+
+			<div>
+				<table class="table">
+					<thead class="thead-dark">
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">Title</th>
+							<th scope="col">User</th>
+							<th scope="col">Date</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for post in posts %}
+							<tr>
+								<th>{{ post.id }}</th>
+								<th>{{ post.title }}</th>
+								<td>{{ post.userId }}</td>
+								<td>{{ post.lastUpdateDate }}</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</section>
 	</div>
 {% endblock %}
