@@ -28,6 +28,14 @@ admin:
   path: /admin
   controller: App\Controller\AdminController::admin
 
+users:
+  path: /admin/users
+  controller: App\Controller\AdminController::users
+
+posts:
+  path: /admin/posts
+  controller: App\Controller\AdminController::posts
+
 about:
   path: /about
   controller: App\Controller\MainController::about
@@ -50,18 +58,22 @@ user_delete:
   requirements:
     id: '\d+'
 
+category:
+  path: /admin/category
+  controller: App\Controller\CategoryController::index
+
 category_add:
-  path: /category/add
+  path: /admin/category/add
   controller: App\Controller\CategoryController::add
 
 category_edit:
-  path: /category/edit/{id}
+  path: /admin/category/edit/{id}
   controller: App\Controller\CategoryController::edit
   requirements:
     id: '\d+'
 
 category_delete:
-  path: /category/delete/{id}
+  path: /admin/category/delete/{id}
   controller: App\Controller\CategoryController::delete
   requirements:
     id: '\d+'

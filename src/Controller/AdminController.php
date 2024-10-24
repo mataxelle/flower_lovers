@@ -10,20 +10,38 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class AdminController extends AbstractController
 {
-    
+
     public function admin(): Response
     {
 
-        $posts = $this->getDoctrine()->getRepository(Post::class)->findBy(
-            [],
-            ['publicationDate' => 'DESC']
-        );
+        $posts = $this->getDoctrine()->getRepository(Post::class)->findAll();
 
         $users = $this->getDoctrine()->getRepository(User::class)->findAll();
 
         return $this->render('admin/index.html.twig', [
             'posts' => $posts,
             'users' => $users
+        ]);
+    }
+
+    public function users(): Response
+    {
+        $users = $this->getDoctrine()->getRepository(User::class)->findAll();
+
+        return $this->render('admin/users_list.html.twig', [
+            'users' => $users
+        ]);
+    }
+
+    public function posts(): Response
+    {
+        $posts = $this->getDoctrine()->getRepository(Post::class)->findBy(
+            [],
+            ['publicationDate' => 'DESC']
+        );
+
+        return $this->render('admin/posts_list.html.twig', [
+            'posts' => $posts,
         ]);
     }
 }

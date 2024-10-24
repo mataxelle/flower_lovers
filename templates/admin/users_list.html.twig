@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dashboard | Membre(s)
+{% endblock %}
+
+{% block body %}
+	<div class="container my-5">
+		<h1 class="text-center my-5">Liste des membres</h1>
+
+		<div class="my-5">
+			<a href="/admin" class="btn btn-secondary">Retour</a>
+		</div>
+
+		<section id="users" class="my-5">
+			<p>Il y a
+				{{ users|length }}
+				membre(s)</p>
+
+			<div>
+				<table class="table">
+					<thead class="thead-dark">
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">Username</th>
+							<th scope="col">Email</th>
+							<th scope="col">Role</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for user in users %}
+							<tr>
+								<th>{{ user.id }}</th>
+								<td>{{ user.username }}</td>
+								<td>{{ user.email }}</td>
+								{% if 'ROLE_ADMIN' in user.roles %}
+									<td>
+										<span class="badge bg-success">admin</span>
+									</td>
+								{% else %}
+									<td>
+										<span class="badge bg-secondary">no admin</span>
+									</td>
+								{% endif %}
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</section>
+	</div>
+{% endblock %}

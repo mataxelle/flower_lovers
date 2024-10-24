@@ -1,38 +1,38 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Catégories
+{% block title %}Dashboard | Post(s)
 {% endblock %}
 
 {% block body %}
 	<div class="container my-5">
-		<h1 class="text-center my-5">Les catégories</h1>
+		<h1 class="text-center my-5">Liste des posts</h1>
 
 		<div class="my-5">
 			<a href="/admin" class="btn btn-secondary">Retour</a>
 		</div>
 
-		<div>
-			<a href="/admin/category/add" class="btn btn-success">Ajouter</a>
-		</div>
-
-		<section id="category" class="my-5">
+		<section id="posts" class="my-5">
 			<p>Il y a
-				{{ categories|length }}
-				catégorie(s)</p>
+				{{ posts|length }}
+				post(s)</p>
 
 			<div>
 				<table class="table">
 					<thead class="thead-dark">
 						<tr>
 							<th scope="col">#</th>
-							<th scope="col">Label</th>
+							<th scope="col">Title</th>
+							<th scope="col">User</th>
+							<th scope="col">Date</th>
 						</tr>
 					</thead>
 					<tbody>
-						{% for categorie in categories %}
+						{% for post in posts %}
 							<tr>
-								<th>{{ categorie.id }}</th>
-								<th>{{ categorie.label }}</th>
+								<th>{{ post.id }}</th>
+								<th>{{ post.title }}</th>
+								<td>{{ post.userId }}</td>
+								<td>{{ post.lastUpdateDate }}</td>
 							</tr>
 						{% endfor %}
 					</tbody>
