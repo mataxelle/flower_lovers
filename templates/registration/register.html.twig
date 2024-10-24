@@ -1,19 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Inscription{% endblock %}
+{% block title %}Inscription
+{% endblock %}
 
 {% block body %}
-    <div class="container">
-        <h1 class="text-center my-5">Inscription</h1>
+	<div class="container">
+		<h1 class="text-center my-5">Inscription</h1>
 
-        {{ form_start(registrationForm, {'attr': {'class': 'col-6 offset-md-3 mb-5'}}) }}
-            <div class="mb-3">
-                {{ form_label(registrationForm.email, 'Email') }}
-                {{ form_widget(registrationForm.email, {'attr': {'class': 'form-control'}}) }}
-                <span class="text-danger">{{ form_errors(registrationForm.email) }}</span>
-            </div>
-            <div class="mb-3">
-                {{ form_label(registrationForm.username, 'Nom d\'utilisateur') }}
+		{{ form_start(registrationForm, {'attr': {'class': 'w-50 m-auto mb-5'}}) }}
+		<div class="mb-3">
+			{{ form_label(registrationForm.email, 'Email') }}
+			{{ form_widget(registrationForm.email, {'attr': {'class': 'form-control'}}) }}
+			<span class="text-danger">{{ form_errors(registrationForm.email) }}</span>
+		</div>
+		<div class="mb-3">
+			{{ form_label(registrationForm.username, 'Nom d\'utilisateur') }}
                 {{ form_widget(registrationForm.username, {'attr': {'class': 'form-control'}}) }}
                 <span class="text-danger">{{ form_errors(registrationForm.username) }}</span>
             </div>
@@ -32,9 +33,9 @@
             </div>
         {{ form_end(registrationForm) }}
 
-        <div class="col-6 offset-md-3">
-            <p>Déjà inscris ?</p>
-            <a href="{{ path('app_login') }}">Connexion =></a>
-        </div>
-    </div>
-{% endblock %}
+			<div class="w-50 m-auto">
+				<p>Déjà inscris ?</p>
+				<a class="text-decoration-none" href="{{ path('app_login') }}">Connexion =></a>
+			</div>
+		</div>
+	{% endblock %}

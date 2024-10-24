@@ -1,25 +1,25 @@
-{{ form_start(form, { 'attr': {'class': ' col-6 offset-md-3 mb-5'}}) }}
-    <div class="mb-3">
-        {{ form_label( form.title, 'Titre') }}
-        {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
-        <span class="error">{{ form_errors(form.title) }}</span>
-    </div>
-    <div class="mb-3">
-        {{ form_label( form.content, 'Commentaire') }}
-        {{ form_widget(form.content, {'attr': {'class': 'form-control'}}) }}
-        <span class="error">{{ form_errors(form.content) }}</span>
-    </div>
-    <div class="mb-3">
-        {{ form_label( form.categories, 'Choisissez une ou plusieurs couleurs') }}
-        {{ form_widget(form.categories, {'attr': {'class': 'form-control'}}) }}
-        <span class="error">{{ form_errors(form.categories) }}</span>
-    </div>
-    <div class="mb-3">
-        {{ form_label( form.picture, 'Image') }}
-        {{ form_widget(form.picture, {'attr': {'class': 'form-control'}}) }}
-        <span class="error">{{ form_errors(form.picture) }}</span>
-    </div>
-    <div>
-        <button class="btn btn-success">Publier</button>
-    </div>
+{{ form_start(form, { 'attr': {'class': ' w-50 m-auto mb-5'}}) }}
+<div class="mb-3">
+	{{ form_label( form.title, 'Titre') }}
+	{{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+	<span class="error">{{ form_errors(form.title) }}</span>
+</div>
+<div class="mb-3">
+	{{ form_label( form.content, 'Commentaire') }}
+	{{ form_widget(form.content, {'attr': {'class': 'form-control'}}) }}
+	<span class="error">{{ form_errors(form.content) }}</span>
+</div>
+<div class="mb-3">
+	{{ form_label( form.categories, 'Choisissez une ou plusieurs couleurs') }}
+	{{ form_widget(form.categories, {'attr': {'class': 'form-control'}}) }}
+	<span class="error">{{ form_errors(form.categories) }}</span>
+</div>
+<div class="mb-3">
+	{{ form_label( form.picture, 'Image') }}
+	{{ form_widget(form.picture, {'attr': {'class': 'form-control'}}) }}
+	<span class="error">{{ form_errors(form.picture) }}</span>
+</div>
+<div>
+	<button class="btn btn-success">Publier</button>
+</div>
 {{ form_end(form) }}

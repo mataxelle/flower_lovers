@@ -1,68 +1,73 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{% block title %}Flowerlovers{% endblock %}</title>
-        {# Run `composer require symfony/webpack-encore-bundle`
-           and uncomment the following Encore helpers to start using Symfony UX #}
-        {% block stylesheets %}
-        {{ encore_entry_link_tags('app') }}
-        {% endblock %}
-    </head>
-    <body class="d-flex flex-column min-vh-100">
-        <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-success">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="{{ path('home') }}">Flowerlovers<i class="fas fa-leaf"></i></a>
-                {% if app.user %}
-                    <p class="text-center text-white">{{ app.user.username }}</p>
-                {% elseif app.user is null %}
-                    <p class="text-center text-white">Bonjour visiteur</p>
-                {% endif %}
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-                    <ul class="navbar-nav">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="/">Accueil<span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
-                                <i class="fas fa-user"></i>Profile
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdown">
-                                {% if is_granted ('ROLE_ADMIN') %}
-                                    <a class="dropdown-item waves-effect waves-light" href="{{ path('admin') }}">Admin</a>
-                                {% endif %}
-                                {% if app.user %}
-                                    <a class="dropdown-item waves-effect waves-light" href="{{ path('user', {'id' : app.user.id}) }}">Mon compte</a>
-                                    <a class="dropdown-item waves-effect waves-light" href="{{ path('app_logout') }}">Deconnexion</a>
-                                {% elseif app.user is null %}
-                                    <a class="dropdown-item waves-effect waves-light" href="{{ path('app_login') }}">Connexion</a>
-                                {% endif %}
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        </header>
-        <main role="main" class="mb-5">
-            {% block body %}
-            {% endblock %}
-        </main>
-        <footer class="footer mt-auto py-3 bg-light">
-            <p class="text-center">
-                &copy; Copyright {{ 'now'|date('Y') }}
-                &middot; <a href="{{ path('about') }}">Notre mission</a>
-            </p>
-        </footer>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>
+			{% block title %}Flowerlovers
+			{% endblock %}
+		</title>
+		{# Run `composer require symfony/webpack-encore-bundle`
+		           and uncomment the following Encore helpers to start using Symfony UX #}
+		{% block stylesheets %}
+			{{ encore_entry_link_tags('app') }}
+		{% endblock %}
+	</head>
+	<body class="d-flex flex-column min-vh-100">
+		<header>
+			<nav class="navbar navbar-expand-lg navbar-dark bg-success">
+				<div class="container-fluid">
+					<a class="navbar-brand" href="{{ path('home') }}">Flowerlovers<i class="fas fa-leaf"></i>
+					</a>
+					{% if app.user %}
+						<p class="text-center text-white">{{ app.user.username }}</p>
+					{% elseif app.user is null %}
+						<p class="text-center text-white">Bonjour visiteur</p>
+					{% endif %}
+					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+						<ul class="navbar-nav">
+							<li class="nav-item active">
+								<a class="nav-link" href="/">Accueil<span class="sr-only">(current)</span>
+								</a>
+							</li>
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
+									<i class="fas fa-user"></i>Profile
+								</a>
+								<div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdown">
+									{% if is_granted ('ROLE_ADMIN') %}
+										<a class="dropdown-item waves-effect waves-light" href="{{ path('admin') }}">Admin</a>
+									{% endif %}
+									{% if app.user %}
+										<a class="dropdown-item waves-effect waves-light" href="{{ path('user', {'id' : app.user.id}) }}">Mon compte</a>
+										<a class="dropdown-item waves-effect waves-light" href="{{ path('app_logout') }}">Deconnexion</a>
+									{% elseif app.user is null %}
+										<a class="dropdown-item waves-effect waves-light" href="{{ path('app_login') }}">Connexion</a>
+									{% endif %}
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</header>
+		<main role="main" class="mb-5"> {% block body %}{% endblock %}
+			</main>
+			<footer class="footer mt-auto py-3 bg-light">
+				<p class="text-center">
+					&copy; Copyright
+					{{ 'now'|date('Y') }}
+					&middot;
+					<a class="text-decoration-none" href="{{ path('about') }}">Notre mission</a>
+				</p>
+			</footer>
 
-        {% block javascripts %}
-        {{ encore_entry_script_tags('app') }}
-        <script src="https://kit.fontawesome.com/4c2b4e375e.js" crossorigin="anonymous"></script>
-        {% endblock %}
-    </body>
-</html>
+			{% block javascripts %}
+				{{ encore_entry_script_tags('app') }}
+				<script src="https://kit.fontawesome.com/4c2b4e375e.js" crossorigin="anonymous"></script>
+			{% endblock %}
+		</body>
+	</html>
