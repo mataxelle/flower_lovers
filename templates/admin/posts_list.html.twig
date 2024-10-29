@@ -30,9 +30,11 @@
 						{% for post in posts %}
 							<tr>
 								<th>{{ post.id }}</th>
-								<th>{{ post.title }}</th>
-								<td>{{ post.userId }}</td>
-								<td>{{ post.lastUpdateDate }}</td>
+								<th>
+									<a class="text-decoration-none text-black" href="{{ path('post_show', {'id' : post.id}) }}">{{ post.title }}</a>
+								</th>
+								<td>{{ post.user.username }}</td>
+								<td>{{ post.lastUpdateDate|date('d/m/Y') }}</td>
 							</tr>
 						{% endfor %}
 					</tbody>
